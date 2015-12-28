@@ -1,5 +1,6 @@
 package arashincleric.com.justdoit;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,7 +12,30 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+
+    MediaPlayer mediaPlayer = null;
+    int[] audioArray = {
+            R.raw.doit,
+            R.raw.doit2,
+            R.raw.dontletdreams,
+            R.raw.justdoit,
+            R.raw.justdoit2,
+            R.raw.justdoit3,
+            R.raw.justdoit4,
+            R.raw.makeyouredreams,
+            R.raw.nothingimpossible,
+            R.raw.stopgivingup,
+            R.raw.yesterday,
+            R.raw.yesyoucan,
+            R.raw.yourenotgoingtostop
+    };
+    Random r = new Random();
+    int current = -1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +45,29 @@ public class MainActivity extends AppCompatActivity {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "DO IT!!!", Toast.LENGTH_SHORT).show();
+                if(mediaPlayer == null) {
+                    int random = r.nextInt(13); //Get first random
+                    while(current == random){ //If same as last get another
+                        random = r.nextInt(13);
+                    }
+                    current = random; //set new selection;
+
+                    mediaPlayer = MediaPlayer.create(v.getContext(), audioArray[random]);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                            releaseMediaPlayer();
+                        }
+                    });
+                }
             }
         });
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+    }
+
+    public void releaseMediaPlayer(){
+        mediaPlayer = null;
     }
 
     @Override

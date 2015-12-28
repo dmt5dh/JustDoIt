@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="audio_array">
+        <item>R.raw.doit</item>
+        <item>R.raw.doit2</item>
+        <item>R.raw.dontletdreams</item>
+        <item>justdoit</item>
+        <item>R.raw.justdoit2</item>
+        <item>R.raw.justdoit3</item>
+        <item>R.raw.justdoit4</item>
+        <item>R.raw.makeyouredreams</item>
+        <item>R.raw.nothingimpossible</item>
+        <item>R.raw.stopgivingup</item>
+        <item>R.raw.yesterday</item>
+        <item>R.raw.yesterday</item>
+        <item>R.raw.yourenotgoingtostop</item>
+    </array>
+</resources>
