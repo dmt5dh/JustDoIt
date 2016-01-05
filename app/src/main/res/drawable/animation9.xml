@@ -1,0 +1,11 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/shiaopen" android:duration="550" />
+    <item android:drawable="@drawable/shia" android:duration="550" />
+    <item android:drawable="@drawable/shiaopen" android:duration="150"/>
+    <item android:drawable="@drawable/shia" android:duration="100" />
+    <item android:drawable="@drawable/shiaopen" android:duration="250"/>
+    <item android:drawable="@drawable/shia" android:duration="250" />
+    <item android:drawable="@drawable/shiaopen" android:duration="1"/>
+</animation-list>
+
